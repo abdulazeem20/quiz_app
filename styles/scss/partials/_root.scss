@@ -1,0 +1,20 @@
+* {
+    padding   : 0;
+    margin    : 0;
+    box-sizing: border-box;
+}
+
+$responsiveWidths: (s: 480px,
+    m: 768px,
+    l: 900px,
+    xl: 1024px);
+
+@mixin responssiveMedia($width) {
+    @media screen and (min-width: map-get($responsiveWidths, $width)) {
+        @content;
+    }
+}
+
+body {
+    background: $appBackground;
+}
