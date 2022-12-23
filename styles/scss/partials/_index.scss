@@ -1,0 +1,108 @@
+#index {
+    @extend %main;
+    position: relative;
+
+    .container {
+        @extend %main-container;
+        text-align     : center;
+        color          : $headTextColor;
+        align-items    : center;
+        justify-content: center;
+        height         : 90%;
+
+        >div {
+            display        : flex;
+            flex-wrap      : wrap;
+            justify-content: center;
+            gap            : 1rem;
+        }
+    }
+
+    h3 {
+        width    : 100%;
+        font-size: 2rem !important;
+
+        &.out {
+            animation: h3Out .5s linear;
+            @include indexAnimation(h3Out, Y, "-");
+        }
+    }
+
+    #start {
+        max-width: fit-content;
+
+        &.out {
+            animation: startOut .5s linear;
+
+            @include indexAnimation(startOut, X, "-");
+
+        }
+    }
+
+    #highScore {
+        &.out {
+            animation: startHighScore .5s linear;
+
+            @include indexAnimation(startHighScore, X);
+        }
+    }
+
+    .info {
+        position: absolute;
+        bottom  : 1rem;
+        right   : 1rem;
+
+
+        .container {
+            position: relative;
+            scale   : 0;
+            @extend %transition;
+
+            &.open {
+                scale: 1;
+            }
+
+            .content {
+                position     : absolute;
+                right        : 2rem;
+                bottom       : 0;
+                z-index      : 1;
+                width        : 15rem;
+                padding      : .5rem;
+                display      : block;
+                background   : $primaryColor;
+                border-radius: .3rem;
+                box-shadow   : 0 0 2px 4px $shadowColor;
+
+                .list-group {
+                    text-align: left;
+
+                }
+
+
+            }
+
+        }
+
+        #info {
+            border-radius: 50%;
+            box-shadow   : 0 0 2px 4px $shadowColor;
+
+            &.open {
+                animation: mainAnimation 1s linear alternate infinite;
+            }
+
+
+            @keyframes mainAnimation {
+                from {
+                    transform: scale(1.1);
+                    border   : 3px solid $headTextColor;
+                }
+
+                to {
+                    transform: scale(.9);
+                }
+            }
+        }
+    }
+}

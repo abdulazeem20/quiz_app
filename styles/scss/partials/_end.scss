@@ -1,0 +1,29 @@
+#end {
+    @extend %main;
+
+    .container {
+        @extend %main-container;
+        align-items: center;
+        gap        : .5rem;
+        text-align : center;
+
+        h5 {
+            font-size: 3rem;
+
+        }
+
+        input {
+            font-size: 1.3rem;
+        }
+
+        input,
+        button {
+            max-width : 15rem;
+            box-shadow: 0 0 2px 4px $shadowColor;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+}
