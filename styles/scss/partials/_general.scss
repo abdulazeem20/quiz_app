@@ -1,3 +1,56 @@
 %transition {
     transition: all ease-in-out .5s;
 }
+
+%main {
+    width      : 100vw;
+    height     : 100vh;
+    overflow-x : hidden;
+    display    : grid;
+    place-items: center;
+}
+
+%main-container {
+    padding       : 1rem 0;
+    width         : 90%;
+    max-width     : 40em;
+    display       : flex;
+    flex-direction: column;
+    gap           : 1.5rem;
+}
+
+@mixin indexAnimation($transitionname, $pos, $sign: "+") {
+
+    $list: (s: 50%, m: 100%, l: 150%, xl: 200%);
+
+    @if $sign=="-" {
+        $list: (s: -50%, m: -100%, l: -150%, xl: -200%);
+    }
+
+    @keyframes #{$transitionname} {
+        from {
+            transform: translate#{$pos}(0);
+            opacity  : 1;
+        }
+
+        25% {
+            transform: translate#{$pos}(map-get($list, m));
+            opacity  : .75;
+        }
+
+        50% {
+            transform: translate#{$pos}(map-get($list, l));
+            opacity  : .5;
+        }
+
+        75% {
+            transform: translate#{$pos}(map-get($list, xl));
+            opacity  : .25;
+        }
+
+        to {
+            transform: translate#{$pos}(map-get($list, s));
+            opacity  : .0;
+        }
+    }
+}

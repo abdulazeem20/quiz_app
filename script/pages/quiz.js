@@ -1,5 +1,6 @@
 import { question } from "../components/serverQuestion.js";
 import { Main } from "../components/Main.js";
+import { End } from "./End.js";
 export function Quiz() {
   let availableQuestion = [...question];
   let maxQuestion = 3;
@@ -26,7 +27,9 @@ export function Quiz() {
     }
     setTimeout(() => {
       if (availableQuestion.length === 0 || questionState == 3) {
-        location.reload();
+        let details = JSON.stringify({ score, page: "end" });
+        localStorage.setItem("state", details);
+        End({ score });
         return;
       }
       questionState++;
@@ -73,5 +76,4 @@ export function Quiz() {
   section.find(".progress-bar").css({ width: `${getPercentage()}%` });
   $("body").children().not("script").remove();
   $("body").prepend(section);
-  return section;
 }

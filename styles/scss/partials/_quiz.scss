@@ -1,17 +1,8 @@
 #quiz {
-    width      : 100vw;
-    height     : 100vh;
-    overflow-x : hidden;
-    display    : grid;
-    place-items: center;
+    @extend %main;
 
     .container {
-        padding       : 1rem 0;
-        width         : 90%;
-        max-width     : 40em;
-        display       : flex;
-        flex-direction: column;
-        gap           : 1.5rem;
+        @extend %main-container
     }
 
     .head {
