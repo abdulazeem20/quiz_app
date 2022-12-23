@@ -1,6 +1,6 @@
 import { question } from "../components/serverQuestion.js";
 import { Main } from "../components/Main.js";
-import { End } from "./End.js";
+import { End } from "./end.js";
 export function Quiz() {
   let availableQuestion = [...question];
   let maxQuestion = 3;
